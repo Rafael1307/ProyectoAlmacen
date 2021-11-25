@@ -52,7 +52,7 @@ class PentradaController extends Controller
 
         $pentrada = Pentrada::create($request->all());
 
-        return redirect()->route('pentradas.index')
+        return redirect()->route('pentradas.create')
             ->with('success', 'Pentrada created successfully.');
     }
 

@@ -2,8 +2,8 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('idEntrada') }}
-            {{ Form::text('idEntrada', $pentrada->idEntrada, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
+            
+            {{ Form::hidden('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
             {!! $errors->first('idEntrada', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
@@ -20,5 +20,9 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('entradas.index') }}" onclick="return confirm('¿Terminar el registro de pedidos?')" ><button type="" class="btn btn-primary" style="float: right;">Terminar</button></a>
+    </div>
+    <div class="box-footer mt20">
+        
     </div>
 </div>

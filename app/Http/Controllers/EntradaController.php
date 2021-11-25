@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entrada;
+use App\Models\Pentrada;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -46,9 +48,12 @@ class EntradaController extends Controller
         request()->validate(Entrada::$rules);
 
         $entrada = Entrada::create($request->all());
+        $ide = $entrada->id;
 
-        return redirect()->route('entradas.index')
-            ->with('success', 'Entrada created successfully.');
+        $pentrada = new Pentrada();
+
+        $productos = Producto::pluck('Nombre', 'id');
+        return view('pentrada.create', compact('pentrada', 'productos', 'ide'));
     }
 
     /**
@@ -59,9 +64,10 @@ class EntradaController extends Controller
      */
     public function show($id)
     {
-        $entrada = Entrada::find($id);
+        $pentradas = Pentrada::paginate();
 
-        return view('entrada.show', compact('entrada'));
+        return view('pentrada.index', compact('pentradas', 'id'))
+            ->with('i', (request()->input('page', 1) - 1) * $pentradas->perPage());
     }
 
     /**
