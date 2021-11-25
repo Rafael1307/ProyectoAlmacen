@@ -7,6 +7,7 @@ use App\Models\Categoria;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
 /**
  * Class ProductoController
  * @package App\Http\Controllers
@@ -48,10 +49,14 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Producto::$rules);
+        //request()->validate(Producto::$rules);
 
-        $producto = Producto::create($request->all());
+        $producto = $request->all();
 
+        if($request->hasFile('foto')){
+            $producto['foto']=$request->file('foto')->store('uploads','public');
+        }
+        Producto::create($producto);
         return redirect()->route('productos.index')
             ->with('success', 'Producto created successfully.');
     }
@@ -94,9 +99,19 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        request()->validate(Producto::$rules);
+        //request()->validate(Producto::$rules);
 
-        $producto->update($request->all());
+        $id = $producto->id;
+        $temp = request()->except(['_token','_method']);
+        if($request->hasFile('foto')){
+           
+            Storage::delete('public/'.$producto->foto);
+             
+            $temp['foto'] = $request->file('foto')->store('uploads','public');
+            
+        }
+
+        Producto::where('id','=',$id)->update($temp);;
 
         return redirect()->route('productos.index')
             ->with('success', 'Producto updated successfully');
@@ -109,7 +124,9 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = Producto::find($id)->delete();
+        $producto = Producto::find($id);
+        Storage::delete('public/'.$producto->foto);
+        Producto::find($id)->delete();
 
         return redirect()->route('productos.index')
             ->with('success', 'Producto deleted successfully');

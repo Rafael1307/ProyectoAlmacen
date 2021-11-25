@@ -3,7 +3,10 @@
         
         <div class="form-group">
             {{ Form::label('foto') }}
-            {{ Form::text('foto', $producto->foto, ['class' => 'form-control' . ($errors->has('foto') ? ' is-invalid' : ''), 'placeholder' => 'Foto']) }}
+            @if(isset($producto->foto))
+            <img src="{{ asset('storage').'/'.$producto->foto }}" width="50px">
+        @endif
+            <input type="file" name="foto" id="foto" class="form-control">
             {!! $errors->first('foto', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">

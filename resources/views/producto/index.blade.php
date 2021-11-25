@@ -51,7 +51,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $producto->foto }}</td>
+											<td>                                                
+                                                <img src="{{ asset('storage').'/'.$producto->foto }}" width="50px">
+                                            </td>
 											<td>{{ $producto->Nombre }}</td>
 											<td>{{ $producto->Marca }}</td>
 											<td>{{ $producto->Precio }}</td>
