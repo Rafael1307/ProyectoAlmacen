@@ -3,12 +3,12 @@
         
         <div class="form-group">
             {{ Form::label('fecha') }}
-            {{ Form::text('fecha', $salida->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {{ Form::text('fecha', date('Y-m-d'), ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha', 'readonly' => 'readonly ']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('hora') }}
-            {{ Form::text('hora', $salida->hora, ['class' => 'form-control' . ($errors->has('hora') ? ' is-invalid' : ''), 'placeholder' => 'Hora']) }}
+            {{ Form::text('hora', date('H:i:s'), ['class' => 'form-control' . ($errors->has('hora') ? ' is-invalid' : ''), 'placeholder' => 'Hora', 'readonly' => 'readonly ']) }}
             {!! $errors->first('hora', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

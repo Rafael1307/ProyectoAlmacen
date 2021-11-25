@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('idSalida') }}
-            {{ Form::text('idSalida', $psalida->idSalida, ['class' => 'form-control' . ($errors->has('idSalida') ? ' is-invalid' : ''), 'placeholder' => 'Idsalida']) }}
+            {{ Form::hidden('idSalida', $ide, ['class' => 'form-control' . ($errors->has('idSalida') ? ' is-invalid' : ''), 'placeholder' => 'Idsalida']) }}
             {!! $errors->first('idSalida', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">

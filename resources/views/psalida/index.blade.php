@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('psalidas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('informe PDF') }}
                                 </a>
                               </div>
                         </div>
@@ -40,11 +40,14 @@
 										<th>Idproducto</th>
 										<th>Cantidad</th>
 
-                                        <th></th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($psalidas as $psalida)
+                                    @if ($psalida->id == $id)
+                                        
+                                    
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
@@ -52,16 +55,9 @@
 											<td>{{ $psalida->producto->Nombre }}</td>
 											<td>{{ $psalida->cantidad }}</td>
 
-                                            <td>
-                                                <form action="{{ route('psalidas.destroy',$psalida->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('psalidas.show',$psalida->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('psalidas.edit',$psalida->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                </form>
-                                            </td>
+                                            
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
