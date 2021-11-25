@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Salida;
+use App\Models\Psalida;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -46,9 +48,14 @@ class SalidaController extends Controller
         request()->validate(Salida::$rules);
 
         $salida = Salida::create($request->all());
+        $ide = $salida->id;
 
-        return redirect()->route('salidas.index')
-            ->with('success', 'Salida created successfully.');
+        $psalida = new Psalida();
+
+
+
+        $productos = Producto::pluck('Nombre', 'id');
+        return view('psalida.create', compact('psalida', 'productos', 'ide'));
     }
 
     /**
@@ -59,9 +66,10 @@ class SalidaController extends Controller
      */
     public function show($id)
     {
-        $salida = Salida::find($id);
+        $psalidas = Psalida::paginate();
 
-        return view('salida.show', compact('salida'));
+        return view('psalida.index', compact('pesalidas', 'id'))
+            ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
     }
 
     /**
