@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('categorias', App\Http\Controllers\CategoriaController::class)->middleware('auth');
-Route::resource('productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
-Route::resource('entradas', App\Http\Controllers\EntradaController::class)->middleware('auth');
-Route::resource('salidas', App\Http\Controllers\SalidaController::class)->middleware('auth');
-Route::resource('pentradas', App\Http\Controllers\PentradaController::class)->middleware('auth');
-Route::resource('psalidas', App\Http\Controllers\PsalidaController::class)->middleware('auth');
+Route::resource('categorias', App\Http\Controllers\CategoriaController::class)->middleware(['auth', 'verified']); 
+Route::resource('productos', App\Http\Controllers\ProductoController::class)->middleware(['auth', 'verified']);
+Route::resource('entradas', App\Http\Controllers\EntradaController::class)->middleware(['auth', 'verified']);
+Route::resource('salidas', App\Http\Controllers\SalidaController::class)->middleware(['auth', 'verified']);
+Route::resource('pentradas', App\Http\Controllers\PentradaController::class)->middleware(['auth', 'verified']);
+Route::resource('psalidas', App\Http\Controllers\PsalidaController::class)->middleware(['auth', 'verified']);
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
