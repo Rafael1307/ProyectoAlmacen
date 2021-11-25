@@ -36,8 +36,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Identrada</th>
-										<th>Idproducto</th>
+										<th>Entrada</th>
+										<th>Producto</th>
 										<th>Cantidad</th>
 
                                         

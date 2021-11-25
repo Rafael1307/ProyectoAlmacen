@@ -49,7 +49,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //request()->validate(Producto::$rules);
+        request()->validate(Producto::$rules);
 
         $producto = $request->all();
 
@@ -99,7 +99,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //request()->validate(Producto::$rules);
+        request()->validate(Producto::$rules);
 
         $id = $producto->id;
         $temp = request()->except(['_token','_method']);
