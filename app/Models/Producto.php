@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Producto
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Producto extends Model
 {
+    use SoftDeletes;
     
     static $rules = [
 		'foto' => 'required',

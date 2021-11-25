@@ -28,4 +28,4 @@ Route::resource('psalidas', App\Http\Controllers\PsalidaController::class)->midd
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');

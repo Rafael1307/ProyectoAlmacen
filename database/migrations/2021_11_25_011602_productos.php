@@ -27,6 +27,7 @@ class Productos extends Migration
             $table->text('Descripcion');
             $table->bigInteger('catId')->unsigned();
 
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('catId')->references('id')->on('categorias')->onDelete("cascade");
