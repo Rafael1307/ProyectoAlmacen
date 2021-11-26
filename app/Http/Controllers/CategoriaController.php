@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -59,9 +60,14 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        $categoria = Categoria::find($id);
+        //$categoria = Categoria::find($id);
 
-        return view('categoria.show', compact('categoria'));
+        //return view('categoria.show', compact('categoria'));
+
+        $productos = Producto::paginate();
+
+        return view('categoria.show', compact('productos', 'id'))
+            ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 
     /**
