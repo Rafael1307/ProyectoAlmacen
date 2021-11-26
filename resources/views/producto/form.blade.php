@@ -2,12 +2,12 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('Foto') }}
+            {{ Form::label('foto') }}
             @if(isset($producto->foto))
             <img src="{{ asset('storage').'/'.$producto->foto }}" width="50px">
         @endif
-            <input type="file" name="foto" id="foto" class="form-control">
-            {!! $errors->first('foto', '<div class="invalid-feedback">:message</p>') !!}
+        {{ Form::file('foto', ['class' => 'form-control' . ($errors->has('foto') ? ' is-invalid' : '')]) }}
+        {!! $errors->first('foto', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Nombre') }}

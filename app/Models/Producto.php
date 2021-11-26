@@ -29,7 +29,7 @@ class Producto extends Model
     use SoftDeletes;
     
     static $rules = [
-		'foto' => 'required',
+		'foto' => 'required|mimes:jpeg,png,jpg',
 		'Nombre' => 'required',
 		'Marca' => 'required',
 		'Precio' => 'required',
