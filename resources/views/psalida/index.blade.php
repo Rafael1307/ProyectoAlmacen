@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('psalidas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('informe PDF') }}
+                                  {{ __('Informe PDF') }}
                                 </a>
                               </div>
                         </div>
@@ -36,8 +36,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Idsalida</th>
-										<th>Idproducto</th>
+										<th>Salida</th>
+										<th>Producto</th>
 										<th>Cantidad</th>
 
                                         
