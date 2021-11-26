@@ -21,6 +21,8 @@ class Entradas extends Migration
             $table->date('fecha');
             $table->time('hora');
 
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

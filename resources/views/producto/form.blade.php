@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Precio') }}
-            {{ Form::number('Precio', $producto->Precio, ['class' => 'form-control' . ($errors->has('Precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio']) }}
+            {{ Form::number('Precio', $producto->Precio, ['class' => 'form-control' . ($errors->has('Precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio', 'step' => '.01']) }}
             {!! $errors->first('Precio', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
