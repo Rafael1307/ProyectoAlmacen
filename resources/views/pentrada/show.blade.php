@@ -22,7 +22,8 @@
                             <table class="table">
                                 <thead class="thead">
                                     <tr>
-                                        <th colspan="3"><center> INFORME ENTRADAS DE PRODUCTO</center></th>
+                                        <th colspan="2"><center> INFORME ENTRADAS DE PRODUCTO</center></th>
+                                        <th>{{ $fecha }}
                                     </tr>
                                     <tr>
                                         

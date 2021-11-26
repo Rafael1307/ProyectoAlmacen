@@ -82,9 +82,12 @@ class PsalidaController extends Controller
      */
     public function show($id)
     {
+
+        $salida = Salida::find($id);
+
         $psalidas = Psalida::paginate();
 
-        $pdf = PDF::loadView('psalida.show', ['psalidas'=>$psalidas, 'id'=>$id]);
+        $pdf = PDF::loadView('psalida.show', ['psalidas'=>$psalidas, 'id'=>$id, 'fecha'=>$salida->fecha]);
         return $pdf->stream();
 
         //return view('psalida.show', compact('psalidas', 'id'))

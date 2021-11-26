@@ -80,10 +80,12 @@ class PentradaController extends Controller
     public function show($id)
     {
 
+        $entrada = Entrada::find($id);
+
 
         $pentradas = Pentrada::paginate();
 
-        $pdf = PDF::loadView('pentrada.show', ['pentradas'=>$pentradas, 'id'=>$id]);
+        $pdf = PDF::loadView('pentrada.show', ['pentradas'=>$pentradas, 'id'=>$id, 'fecha'=>$entrada->fecha]);
         return $pdf->stream();
         //return view('pentrada.show', compact('pentrada'));
     }
