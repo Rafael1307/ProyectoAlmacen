@@ -3,12 +3,12 @@
         
         <div class="form-group">
             
-            {{ Form::hidden('Entrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
+            {{ Form::text('Entrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada', 'readonly' => 'readonly']) }}
             {!! $errors->first('idEntrada', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Producto') }}
-            {{ Form::select('idProducto', $productos, $pentrada->idProducto, ['class' => 'form-control' . ($errors->has('idProducto') ? ' is-invalid' : ''), 'placeholder' => 'Idproducto']) }}
+            {{ Form::select('idProducto', $productos, $pentrada->idProducto, ['class' => 'form-control' . ($errors->has('idProducto') ? ' is-invalid' : ''), 'placeholder' => 'Producto']) }}
             {!! $errors->first('idProducto', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">

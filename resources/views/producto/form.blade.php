@@ -2,7 +2,7 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('foto') }}
+            {{ Form::label('Foto') }}
             @if(isset($producto->foto))
             <img src="{{ asset('storage').'/'.$producto->foto }}" width="50px">
         @endif
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Precio') }}
-            {{ Form::text('Precio', $producto->Precio, ['class' => 'form-control' . ($errors->has('Precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio']) }}
+            {{ Form::number('Precio', $producto->Precio, ['class' => 'form-control' . ($errors->has('Precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio']) }}
             {!! $errors->first('Precio', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
@@ -30,13 +30,13 @@
             {!! $errors->first('Descripcion', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('catId') }}
-            {{ Form::select('catId', $categorias, $producto->catId, ['class' => 'form-control' . ($errors->has('catId') ? ' is-invalid' : ''), 'placeholder' => 'Catid']) }}
+            {{ Form::label('Categoria') }}
+            {{ Form::select('catId', $categorias, $producto->catId, ['class' => 'form-control' . ($errors->has('catId') ? ' is-invalid' : ''), 'placeholder' => 'Categoria']) }}
             {!! $errors->first('catId', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </div>
 </div>
