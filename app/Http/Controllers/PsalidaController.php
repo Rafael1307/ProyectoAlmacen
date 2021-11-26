@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Salida;
 
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class PsalidaController
@@ -25,6 +26,17 @@ class PsalidaController extends Controller
 
         return view('psalida.index', compact('psalidas'))
             ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
+    }
+
+    public function pdf()
+    {
+        $psalidas = Psalida::paginate();
+
+        return view('psalida.show', compact('psalidas'))
+            ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
+
+        //return view('psalida.index', compact('psalidas'))
+          //  ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
     }
 
     /**
@@ -70,9 +82,16 @@ class PsalidaController extends Controller
      */
     public function show($id)
     {
-        $psalida = Psalida::find($id);
+        $psalidas = Psalida::paginate();
 
-        return view('psalida.show', compact('psalida'));
+        $pdf = PDF::loadView('psalida.show', ['psalidas'=>$psalidas, 'id'=>$id]);
+        return $pdf->stream();
+
+        //return view('psalida.show', compact('psalidas', 'id'))
+          //  ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
+        //$psalida = Psalida::find($id);
+
+        //return view('psalida.show', compact('psalida'));
     }
 
     /**

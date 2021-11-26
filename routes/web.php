@@ -25,6 +25,10 @@ Route::resource('salidas', App\Http\Controllers\SalidaController::class)->middle
 Route::resource('pentradas', App\Http\Controllers\PentradaController::class)->middleware(['auth', 'verified']);
 Route::resource('psalidas', App\Http\Controllers\PsalidaController::class)->middleware(['auth', 'verified']);
 
+Route::get('pentradas/pdf', [App\Http\Controllers\PentradaController::class, 'pdf'])->middleware(['auth', 'verified'])->name('pentradas.pdf');
+
+Route::get('psalidas/pdf', [App\Http\Controllers\PsalidaController::class, 'pdf'])->middleware(['auth', 'verified'])->name('psalidas.pdf');
+
 
 Auth::routes(['verify' => true]);
 

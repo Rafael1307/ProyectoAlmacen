@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Entrada;
 
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class PentradaController
@@ -25,6 +26,16 @@ class PentradaController extends Controller
 
         return view('pentrada.index', compact('pentradas'))
             ->with('i', (request()->input('page', 1) - 1) * $pentradas->perPage());
+    }
+
+    public function pdf()
+    {
+        $pentradas = Pentrada::paginate();
+
+        return view('psalida.show');
+
+        //return view('pentrada.index', compact('pentradas'))
+          //  ->with('i', (request()->input('page', 1) - 1) * $pentradas->perPage());
     }
 
     /**
@@ -68,9 +79,13 @@ class PentradaController extends Controller
      */
     public function show($id)
     {
-        $pentrada = Pentrada::find($id);
 
-        return view('pentrada.show', compact('pentrada'));
+
+        $pentradas = Pentrada::paginate();
+
+        $pdf = PDF::loadView('pentrada.show', ['pentradas'=>$pentradas, 'id'=>$id]);
+        return $pdf->stream();
+        //return view('pentrada.show', compact('pentrada'));
     }
 
     /**

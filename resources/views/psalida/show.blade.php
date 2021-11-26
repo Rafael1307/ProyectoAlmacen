@@ -1,41 +1,63 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
 
-@section('template_title')
-    {{ $psalida->name ?? 'Show Psalida' }}
-@endsection
-
-@section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">Show Psalida</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('psalidas.index') }}"> Back</a>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        
+            
+                
+                 
+                    
+                   
                         
-                        <div class="form-group">
-                            <strong>Idsalida:</strong>
-                            {{ $psalida->idSalida }}
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead">
+                                    <tr>
+                                        <th colspan="3"><center> INFORME SALIDAS DE PRODUCTO</center></th>
+                                    </tr>
+                                    <tr>
+                                        
+                                        
+                                        <th>Salida</th>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+    
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($psalidas as $psalida)
+                                    @if ($psalida->idSalida == $id)
+                                        
+                                    
+                                        <tr>
+                                            
+                                            
+                                            <td>{{ $psalida->idSalida }}</td>
+                                            <td>{{ $psalida->producto->Nombre }}</td>
+                                            <td>{{ $psalida->cantidad }}</td>
+    
+                                            
+                                        </tr>
+                                        @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="form-group">
-                            <strong>Idproducto:</strong>
-                            {{ $psalida->idProducto }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Cantidad:</strong>
-                            {{ $psalida->cantidad }}
-                        </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-@endsection
+                
+                
+            
+        
+    </div>
+</body>
+</html>

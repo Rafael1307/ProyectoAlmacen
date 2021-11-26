@@ -17,9 +17,9 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('pentradas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Informe PDF') }}
-                                </a>
+                                
+                                <a class="btn btn-sm btn-primary float-right" href="{{ route('pentradas.show',$id) }}"><i class="fa fa-fw fa-eye"></i> Informe PDF</a>
+
                               </div>
                         </div>
                     </div>
