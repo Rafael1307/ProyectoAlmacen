@@ -45,7 +45,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($psalidas as $psalida)
-                                    @if ($psalida->id == $id)
+                                    @if ($psalida->idSalida == $id)
                                         
                                     
                                         <tr>

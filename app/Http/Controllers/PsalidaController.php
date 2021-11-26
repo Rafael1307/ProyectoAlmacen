@@ -50,10 +50,16 @@ class PsalidaController extends Controller
     {
         request()->validate(Psalida::$rules);
 
-        $psalida = Psalida::create($request->all());
+        $psalidaa = Psalida::create($request->all());
+        $ide = $psalidaa->idSalida;
 
-        return redirect()->route('psalidas.index')
-            ->with('success', 'Psalida created successfully.');
+        $psalida = new Psalida();
+
+        $productos = Producto::pluck('Nombre', 'id');
+
+        return view('psalida.create', compact('psalida', 'productos', 'ide'));
+        //return redirect()->route('psalidas.index')
+          //  ->with('success', 'Psalida created successfully.');
     }
 
     /**

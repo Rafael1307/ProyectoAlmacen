@@ -68,7 +68,7 @@ class SalidaController extends Controller
     {
         $psalidas = Psalida::paginate();
 
-        return view('psalida.index', compact('pesalidas', 'id'))
+        return view('psalida.index', compact('psalidas', 'id'))
             ->with('i', (request()->input('page', 1) - 1) * $psalidas->perPage());
     }
 
