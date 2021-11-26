@@ -45,7 +45,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($pentradas as $pentrada)
-                                    @if ($pentrada->id == $id)
+                                    
+                                    @if ($pentrada->idEntrada == $id)
                                         
                                     
                                         <tr>

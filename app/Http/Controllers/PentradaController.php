@@ -50,10 +50,14 @@ class PentradaController extends Controller
     {
         request()->validate(Pentrada::$rules);
 
-        $pentrada = Pentrada::create($request->all());
+        $pentradaa = Pentrada::create($request->all());
 
-        return redirect()->route('pentradas.create')
-            ->with('success', 'Pentrada created successfully.');
+        $ide = $pentradaa->idEntrada;
+
+        $pentrada = new Pentrada();
+
+        $productos = Producto::pluck('Nombre', 'id');
+        return view('pentrada.create', compact('pentrada', 'productos', 'ide'));
     }
 
     /**

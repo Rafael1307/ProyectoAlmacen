@@ -3,7 +3,7 @@
         
         <div class="form-group">
             
-            {{ Form::text('Entrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada', 'readonly' => 'readonly']) }}
+            {{ Form::number('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
             {!! $errors->first('idEntrada', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
@@ -20,7 +20,7 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="{{ route('entradas.index') }}" onclick="return confirm('¿Terminar el registro de pedidos?')" ><button type="" class="btn btn-primary" style="float: right;">Terminar</button></a>
+        <a  href="{{ route('salidas.index') }}" onclick="return confirm('¿Terminar el registro de pedidos?')" ><button class="btn btn-primary" style="float: right;">Terminar</button></a>
     </div>
     <div class="box-footer mt20">
         
