@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('cantidad') }}
-            {{ Form::text('cantidad', $psalida->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+            {{ Form::number('cantidad', $psalida->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
             {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

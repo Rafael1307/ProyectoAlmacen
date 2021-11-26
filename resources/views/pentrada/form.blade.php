@@ -3,7 +3,7 @@
         
         <div class="form-group">
             
-            {{ Form::number('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
+            {{ Form::hideen('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
             {!! $errors->first('idEntrada', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Cantidad') }}
-            {{ Form::text('cantidad', $pentrada->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+            {{ Form::number('cantidad', $pentrada->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
             {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
