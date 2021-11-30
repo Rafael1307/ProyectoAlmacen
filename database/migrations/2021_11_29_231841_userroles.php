@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Categorias extends Migration
+class Userroles extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,16 @@ class Categorias extends Migration
     public function up()
     {
         //
-        Schema::create('categorias', function (Blueprint $table) {
-            
-            $table->engine="InnoDB";
-
+        Schema::create('userroles', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->bigInteger('idUser')->unsigned();
+            $table->bigInteger('idRol')->unsigned();
             
-            $table->string('tipo');
-
-            $table->softDeletes();
-
             $table->timestamps();
+
+            $table->foreign('idUser')->references('id')->on('users')->onDelete("cascade");
+            $table->foreign('idRol')->references('id')->on('roles')->onDelete("cascade");
         });
     }
 

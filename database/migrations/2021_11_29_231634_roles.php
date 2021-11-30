@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Categorias extends Migration
+class Roles extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,10 @@ class Categorias extends Migration
     public function up()
     {
         //
-        Schema::create('categorias', function (Blueprint $table) {
-            
-            $table->engine="InnoDB";
-
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             
-            $table->string('tipo');
-
-            $table->softDeletes();
+            $table->string('rol');
 
             $table->timestamps();
         });
