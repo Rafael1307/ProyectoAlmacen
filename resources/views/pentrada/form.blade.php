@@ -19,7 +19,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Agregar</button>
         <a  href="{{ route('entradas.index') }}" onclick="return confirm('¿Terminar el registro de entradas?')" class="btn btn-primary" style="float: right;">Terminar</a>
     </div>
     <div class="box-footer mt20">

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Salida;
 use App\Models\Psalida;
 use App\Models\Producto;
+use App\Models\Userrole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class SalidaController
@@ -20,10 +22,20 @@ class SalidaController extends Controller
      */
     public function index()
     {
-        $salidas = Salida::paginate();
 
-        return view('salida.index', compact('salidas'))
-            ->with('i', (request()->input('page', 1) - 1) * $salidas->perPage());
+        $userid = Auth::user()->id;
+        $lista = Userrole::paginate();
+        foreach($lista as $elemento){
+            if($elemento->idUser == $userid AND $elemento->idRol == '1'){
+
+                $salidas = Salida::paginate();
+
+                return view('salida.index', compact('salidas'))
+                    ->with('i', (request()->input('page', 1) - 1) * $salidas->perPage());
+            }
+        }
+        return redirect()->route('productos.index')
+            ->with('success', 'Sin permiso para entrar a esta seccion.');
     }
 
     /**

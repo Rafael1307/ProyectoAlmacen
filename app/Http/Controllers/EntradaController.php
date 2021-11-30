@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Entrada;
 use App\Models\Pentrada;
 use App\Models\Producto;
+use App\Models\Userrole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EntradaController
@@ -20,10 +22,20 @@ class EntradaController extends Controller
      */
     public function index()
     {
-        $entradas = Entrada::paginate();
 
-        return view('entrada.index', compact('entradas'))
-            ->with('i', (request()->input('page', 1) - 1) * $entradas->perPage());
+        $userid = Auth::user()->id;
+        $lista = Userrole::paginate();
+        foreach($lista as $elemento){
+            if($elemento->idUser == $userid AND $elemento->idRol == '3'){
+
+                $entradas = Entrada::paginate();
+
+                return view('entrada.index', compact('entradas'))
+                    ->with('i', (request()->input('page', 1) - 1) * $entradas->perPage());
+            }
+        }
+        return redirect()->route('productos.index')
+            ->with('success', 'Sin permiso para entrar a esta seccion.');
     }
 
     /**
