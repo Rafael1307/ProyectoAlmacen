@@ -55,7 +55,7 @@ class SalidaController extends Controller
 
 
         $productos = Producto::pluck('Nombre', 'id');
-        return view('psalida.create', compact('psalida', 'productos', 'ide'));
+        return view('psalida.create', compact('psalida', 'productos', 'ide'))->with('success', 'Salida creada correctamente.');
     }
 
     /**
@@ -99,7 +99,7 @@ class SalidaController extends Controller
         $salida->update($request->all());
 
         return redirect()->route('salidas.index')
-            ->with('success', 'Salida updated successfully');
+            ->with('success', 'Salida actualizada con exito');
     }
 
     /**
@@ -112,6 +112,6 @@ class SalidaController extends Controller
         $salida = Salida::find($id)->delete();
 
         return redirect()->route('salidas.index')
-            ->with('success', 'Salida deleted successfully');
+            ->with('success', 'Salida eliminada');
     }
 }

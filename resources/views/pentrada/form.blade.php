@@ -2,8 +2,8 @@
     <div class="box-body">
         
         <div class="form-group">
-            
-            {{ Form::hideen('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada']) }}
+            {{ Form::label('Entrada') }}
+            {{ Form::text('idEntrada', $ide, ['class' => 'form-control' . ($errors->has('idEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Identrada', 'readonly' => 'readonly']) }}
             {!! $errors->first('idEntrada', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">

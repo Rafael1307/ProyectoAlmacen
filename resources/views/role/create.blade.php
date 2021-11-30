@@ -1,31 +1,25 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Pentrada
+    Create Role
 @endsection
 
 @section('content')
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
-                @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
 
                 @includeif('partials.errors')
-                
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Agregar producto a entrada</span>
+                        <span class="card-title">Create Role</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('pentradas.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('roles.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('pentrada.form')
+                            @include('role.form')
 
                         </form>
                     </div>

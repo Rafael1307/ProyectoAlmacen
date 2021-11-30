@@ -2,30 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Categoria
+ * Class Role
  *
  * @property $id
- * @property $tipo
+ * @property $rol
  * @property $created_at
  * @property $updated_at
  *
- * @property Producto[] $productos
+ * @property Userrole[] $userroles
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Categoria extends Model
+class Role extends Model
 {
-  //use SoftDeletes;
-
-  use HasFactory;
     
     static $rules = [
-		'tipo' => 'required',
+		'rol' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,15 +30,15 @@ class Categoria extends Model
      *
      * @var array
      */
-    protected $fillable = ['tipo'];
+    protected $fillable = ['rol'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function productos()
+    public function userroles()
     {
-        return $this->hasMany('App\Models\Producto', 'catId', 'id');
+        return $this->hasMany('App\Models\Userrole', 'idRol', 'id');
     }
     
 

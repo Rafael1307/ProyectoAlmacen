@@ -68,7 +68,7 @@ class PentradaController extends Controller
         $pentrada = new Pentrada();
 
         $productos = Producto::pluck('Nombre', 'id');
-        return view('pentrada.create', compact('pentrada', 'productos', 'ide'));
+        return view('pentrada.create', compact('pentrada', 'productos', 'ide'))->with('success', 'Producto agregado a la entrada.');
     }
 
     /**
@@ -118,7 +118,7 @@ class PentradaController extends Controller
         $pentrada->update($request->all());
 
         return redirect()->route('pentradas.index')
-            ->with('success', 'Pentrada updated successfully');
+            ->with('success', 'Producto en entrada actualizado');
     }
 
     /**
@@ -131,6 +131,6 @@ class PentradaController extends Controller
         $pentrada = Pentrada::find($id)->delete();
 
         return redirect()->route('pentradas.index')
-            ->with('success', 'Pentrada deleted successfully');
+            ->with('success', 'Producto eliminado de entrada');
     }
 }

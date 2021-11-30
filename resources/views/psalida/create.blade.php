@@ -8,8 +8,13 @@
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
-
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
                 @includeif('partials.errors')
+               
 
                 <div class="card card-default">
                     <div class="card-header">

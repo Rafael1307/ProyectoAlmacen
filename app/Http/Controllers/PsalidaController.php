@@ -69,7 +69,7 @@ class PsalidaController extends Controller
 
         $productos = Producto::pluck('Nombre', 'id');
 
-        return view('psalida.create', compact('psalida', 'productos', 'ide'));
+        return view('psalida.create', compact('psalida', 'productos', 'ide'))->with('success', 'Producto agregado a la salida.');
         //return redirect()->route('psalidas.index')
           //  ->with('success', 'Psalida created successfully.');
     }
@@ -125,7 +125,7 @@ class PsalidaController extends Controller
         $psalida->update($request->all());
 
         return redirect()->route('psalidas.index')
-            ->with('success', 'Psalida updated successfully');
+            ->with('success', 'Producto en salida actualizado');
     }
 
     /**
@@ -138,6 +138,6 @@ class PsalidaController extends Controller
         $psalida = Psalida::find($id)->delete();
 
         return redirect()->route('psalidas.index')
-            ->with('success', 'Psalida deleted successfully');
+            ->with('success', 'Producto eliminado de la salida');
     }
 }

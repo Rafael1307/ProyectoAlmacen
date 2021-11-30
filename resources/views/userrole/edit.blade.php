@@ -1,31 +1,26 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Pentrada
+    Update Userrole
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
-                @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
 
                 @includeif('partials.errors')
-                
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Agregar producto a entrada</span>
+                        <span class="card-title">Update Userrole</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('pentradas.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('userroles.update', $userrole->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('pentrada.form')
+                            @include('userrole.form')
 
                         </form>
                     </div>
